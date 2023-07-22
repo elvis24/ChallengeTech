@@ -1,0 +1,62 @@
+﻿CREATE DATABASE FinancieraQapaq
+
+USE FinancieraQapaq
+GO
+
+CREATE TABLE INCIDENTE(
+IdIncidente int primary key identity(1,1) not null,
+NumTicket int not null,
+FechaRegistro date,
+ReportadoMediante varchar(100),
+TipoOficina varchar(20),
+NomApeUsuario varchar(100),
+NomAgencia varchar(50),
+TelefonoContacto varchar(10),
+NommbrePC varchar(20),
+DetalleIncidente varchar(200)
+)
+
+CREATE TABLE TIPO_INCIDENTE(
+IdTipoIncidente int primary key identity(1,1) not null,
+Tipo varchar(50),
+)
+
+CREATE TABLE SUB_TIPO(
+Id_SubTipo int primary key,
+SubTipo_incidente varchar(30),
+AreaEncargada varchar(30),
+Correo varchar(50),
+IdTipoIncidente int not null
+constraint fk_tipo_subtipo foreign key(IdTipoIncidente) references TIPO_INCIDENTE(IdTipoIncidente)
+)
+
+insert into TIPO_INCIDENTE(Tipo) values
+('INCIDENTE EN APLICATIVOS'),
+('BASE DE DATOS'),
+('CONECTIVIDAD - RED'),
+('INCIDENCIA EQUIPOS DE COMPUTO')
+--SELECT*FROM TIPO_INCIDENTE
+--SELECT*FROM SUB_TIPO
+
+INSERT INTO SUB_TIPO(Id_SubTipo,SubTipo_incidente,AreaEncargada,Correo,IdTipoIncidente) VALUES
+(1,'SUITE MICRO','HELPDESK','helpdesk@qapaq.pe',1),
+(2,'GESTOR','HELPDESK','helpdesk@qapaq.pe',1),
+(3,'PROCESO BATCH','HELPDESK','helpdesk@qapaq.pe',1),
+(4,'REPORTERIA-OTROS','HELPDESK','helpdesk@qapaq.pe',1),
+
+(5,'EJECUTAR SCRIPT','OPERADORES DE PROD','operadores@qapaq.pe',2),
+(6,'RESTAURAR BASE DATOS','OPERADORES DE PROD','operadores@qapaq.pe',2),
+(7,'AGREGAR CLIENTES NUEVOS','OPERADORES DE PROD','operadores@qapaq.pe',2)
+
+(8,'CAIDA DE ENLACE','INFRAESTRUCTURA','infraestructura@qapaq.pe',3),
+(9,'LENTITUD/INTERMITENCIA','INFRAESTRUCTURA','infraestructura@qapaq.pe',3),
+(10,'ASIGNACION DE IP A PC X VIAJE','INFRAESTRUCTURA','infraestructura@qapaq.pe',3),
+(11,'CORTE DE  ENERGIA ELECTRICA','INFRAESTRUCTURA','infraestructura@qapaq.pe',3)
+
+(12,'INCIDENTES CAMARAS DE SEG','HELPDESK','helpdesk@qapaq.pe',4),
+(13,'CONFIGURACION IMPRESORAS','HELPDESK','helpdesk@qapaq.pe',4),
+(14,'MICROFONO PARLANTE','HELPDESK','helpdesk@qapaq.pe',4),
+(15,'PC-TERMINAL-LAPTOP','HELPDESK','helpdesk@qapaq.pe',4),
+(16,'ANEXO TELEFONICO','HELPDESK','helpdesk@qapaq.pe',4)
+
+
