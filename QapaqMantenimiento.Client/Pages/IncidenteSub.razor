@@ -1,0 +1,87 @@
+﻿@page "/incidentesub"
+@page "/incidentesub/{idSubtipoEditar:int}"
+ 
+@using QapaqMantenimiento.Shared;
+@using QapaqMantenimiento.Client.Services;
+
+
+@inject ISubTipoService subTipoService;
+@inject ITipoIncidenteService tipoService;
+@inject NavigationManager navegacion;
+
+<h3>@titulo</h3>
+
+<EditForm Model="subTipo" OnValidSubmit="onValidSubmit">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <div class="mb-3">
+        <label class="form-control">TIPO INCIDENTE</label>
+        <InputSelect class="form-select" @bind-Value="subTipo.IdTipoIncidente">
+            <option value="0">--Seleccionar una area</option>
+            @foreach (var item in listTipoIncidente)
+            {
+                <option value="@item.IdTipoIncidente">@item.Tipo</option>
+            }
+        </InputSelect>
+        <ValidationMessage For="@(() =>subTipo.AreaEncargada)"></ValidationMessage>
+    </div> 
+    <div class="mb-3">
+        <label class="form-labe">AREA ENCARGADA</label>
+        <InputText class="form-control" @bind-Value="subTipo.AreaEncargada"></InputText>
+        <ValidationMessage For="@(() => subTipo.AreaEncargada)"></ValidationMessage>
+    </div>
+    <div class="mb-3">
+        <label class="form-labe">CORREO</label>
+        <InputText class="form-control" @bind-Value="subTipo.Correo"></InputText>
+        <ValidationMessage For="@(() => subTipo.Correo)"></ValidationMessage>
+    </div>
+
+    <button class="btn btn-primary" type="submit">
+        @btnTexto
+    </button>
+
+    <a class="btn btn-warning" href="subTipo">Volver</a>
+</EditForm>
+
+
+@code {
+    [Parameter]
+    public int idSubtipoEditar { get; set; } = 0;
+
+    string titulo = string.Empty;
+    string btnTexto = string.Empty;
+
+    SubTipoDTO subTipo = new SubTipoDTO();
+    List<TipoIncidenteDTO> listTipoIncidente = new List<TipoIncidenteDTO>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (idSubtipoEditar != 0)
+        {
+            subTipo = await subTipoService.Buscar(idSubtipoEditar);
+            btnTexto = "Actualizar Subtipo";
+            titulo = "Editar Subtipos";
+        }else
+        {
+            btnTexto = "Guardar Incidente";
+            titulo = "Nuevo";
+        }
+        listTipoIncidente = await tipoService.Lista();
+    }
+
+    private async Task onValidSubmit()
+    {
+        int idDevuelto = 0;
+        if (idSubtipoEditar==0)
+        {
+            idDevuelto = await subTipoService.Guardar(subTipo);
+        }else
+        {
+            idDevuelto = await subTipoService.Editar(subTipo);
+        }
+
+        if (idDevuelto !=0)
+        {
+            navegacion.NavigateTo("/subTipo");
+        }
+    }
+}

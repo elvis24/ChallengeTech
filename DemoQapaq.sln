@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QapaqMantenimiento.Server", "QapaqMantenimiento.Server\QapaqMantenimiento.Server.csproj", "{00775797-2449-4E0A-810D-99D94147F19E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QapaqMantenimiento.Server", "QapaqMantenimiento.Server\QapaqMantenimiento.Server.csproj", "{00775797-2449-4E0A-810D-99D94147F19E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QapaqMantenimiento.Shared", "QapaqMantenimiento.Shared\QapaqMantenimiento.Shared.csproj", "{E5C29E5B-62AC-47F0-AE12-7D417218BD1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QapaqMantenimiento.Shared", "QapaqMantenimiento.Shared\QapaqMantenimiento.Shared.csproj", "{E5C29E5B-62AC-47F0-AE12-7D417218BD1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QapaqMantenimiento.Client", "QapaqMantenimiento.Client\QapaqMantenimiento.Client.csproj", "{5681A4EF-0D77-4BD3-9FDE-C01CB76E01AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QapaqMantenimiento.Client", "QapaqMantenimiento.Client\QapaqMantenimiento.Client.csproj", "{5681A4EF-0D77-4BD3-9FDE-C01CB76E01AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

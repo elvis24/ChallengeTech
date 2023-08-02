@@ -28,7 +28,8 @@ namespace QapaqMantenimiento.Server.Models
         {
             modelBuilder.Entity<Incidente>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.IdIncidente)
+                    .HasName("PK__INCIDENT__E92B13DFA55EACE1");
 
                 entity.ToTable("INCIDENTE");
 
@@ -37,8 +38,6 @@ namespace QapaqMantenimiento.Server.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.FechaRegistro).HasColumnType("date");
-
-                entity.Property(e => e.IdIncidente).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.NomAgencia)
                     .HasMaxLength(50)

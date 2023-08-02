@@ -118,9 +118,7 @@ namespace QapaqMantenimiento.Server.Controllers
                 {
                     responseApi.esCorrecto = false;
                     responseApi.Mensaje = "No guardado";
-                }
-
-                
+                }              
             }
             catch (Exception ex)
             {
@@ -156,7 +154,7 @@ namespace QapaqMantenimiento.Server.Controllers
                 else
                 {
                     responseApi.esCorrecto = false;
-                    responseApi.Mensaje = "Empleado no Encontrado";
+                    responseApi.Mensaje = "SubTipo no Encontrado";
                 }
             }
             catch (Exception ex)
@@ -187,7 +185,7 @@ namespace QapaqMantenimiento.Server.Controllers
                 else
                 {
                     responseApi.esCorrecto = false;
-                    responseApi.Mensaje = "Empleado no Encontrado";
+                    responseApi.Mensaje = "SubTipo no Encontrado";
                 }
             }
             catch (Exception ex)
